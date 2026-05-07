@@ -1,0 +1,10 @@
+services:
+  frontend:
+    build:
+      context: .
+      args:
+        # Aquí configuramos la URL del backend a la que apuntará el navegador del profesor
+        - VITE_API_URL=http://localhost:3000/api/superheroes
+    container_name: superheroes_frontend
+    ports:
+      - "5173:80"

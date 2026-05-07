@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 // URL relativa → funciona tanto con el proxy de Vite (dev)
-// como con nginx reverse proxy (Docker/producción)
+// como con nginx reverse proxy (Docker/producción).
+// Se agrega soporte para VITE_API_URL por si se despliega sin proxy.
 const api = axios.create({
-  baseURL: '/api/superheroes',
+  baseURL: import.meta.env.VITE_API_URL || '/api/superheroes',
 })
 
 export const getAllHeroes   = ()        => api.get('/')
